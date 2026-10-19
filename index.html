@@ -144,14 +144,60 @@ figure{height:100%}.chart-wrap{height:0}#chart{max-height:100%}.figure-bar{paddi
     fullscreen.setAttribute('aria-label',active ? 'Exit fullscreen' : 'Enter fullscreen');
   });
   const quips = [
-    'Please do not tap the glass. The thesis is growing.',
-    'Somewhere, a paragraph just became a slightly better paragraph.',
-    'Today’s tiny victory. Tomorrow’s figure caption.',
-    'Research: turning coffee into carefully qualified statements.',
-    'A moment of silence for the sentences that didn’t make it.'
+    "Please do not tap the glass. The thesis is growing.",
+    "Somewhere, a paragraph just became a slightly better paragraph.",
+    "Today’s tiny victory. Tomorrow’s figure caption.",
+    "Research: turning coffee into carefully qualified statements.",
+    "A moment of silence for the sentences that didn’t make it.",
+    "This thesis contains traces of caffeine and unresolved references.",
+    "The plot thickens. So does the methods section.",
+    "Behind every figure is a script named something like final_v7.",
+    "Results may vary. Axis labels should not.",
+    "One small step for a paragraph. One giant leap for the word count.",
+    "The error bars are doing their best.",
+    "Currently converting “I think” into “the results suggest”.",
+    "Some assembly required. Mostly in LaTeX.",
+    "The bibliography has more connections than I do.",
+    "If you can read this, you’re officially part of the procrastination study.",
+    "Writing is just debugging sentences.",
+    "Today’s forecast: scattered citations with a chance of revisions.",
+    "The abstract is short because the journey was not.",
+    "No paragraphs were harmed. Several were heavily revised.",
+    "Somewhere in this thesis, a comma is carrying the whole argument.",
+    "Keep calm and label your axes.",
+    "A thesis is a marathon with footnotes.",
+    "The conclusion is in sight. It would like another revision.",
+    "This sentence has been peer reviewed by the person walking past.",
+    "The data has spoken. I’m still working on the translation.",
+    "Every good plot deserves a caption longer than expected.",
+    "Current research question: where did that reference go?",
+    "The shortest distance between two drafts is never a straight line.",
+    "Science advances one “actually…” at a time.",
+    "Another day, another opportunity to rename a section.",
+    "This work was supported by coffee and the undo button.",
+    "The methods were reproducible. The writing schedule was not.",
+    "There is no “I” in thesis. There is, however, an “is this done yet?”.",
+    "Please hold. Your conclusion is important to us.",
+    "Chapter titles: easy. Everything underneath: ongoing.",
+    "Just one more plot. A phrase with no known upper bound.",
+    "Statistically speaking, at least one of these tabs is useful.",
+    "Today I deleted 200 words. That counts as progress too.",
+    "Some figures are worth a thousand words. Others need a thousand-word caption.",
+    "The discussion section is where the data gets a thoughtful chaperone.",
+    "The cursor is blinking. We’re calling that momentum.",
+    "Even the blank pages have potential.",
+    "My most consistent result is that writing takes longer than expected.",
+    "Nothing is certain except revisions and missing semicolons.",
+    "The thesis and I are both works in progress.",
+    "Progress is not always linear. Fortunately, we have plots.",
+    "Another citation joins the supporting cast.",
+    "Please admire the plot while the next sentence loads.",
+    "This is what “nearly finished” looks like under magnification.",
+    "One day, “final.pdf” will tell the truth."
   ];
   let quip = 0;
-  setInterval(() => {document.getElementById('quip').textContent = quips[++quip % quips.length];},30000);
+  const QUIP_INTERVAL_MS = 60 * 1000;
+  setInterval(() => {document.getElementById('quip').textContent = quips[++quip % quips.length];}, QUIP_INTERVAL_MS);
 })();
 </script>
 </body>
