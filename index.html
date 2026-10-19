@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#f4f1e9">
+<meta name="description" content="A little window into a thesis in the making. Follow the words, figures, and small victories.">
+<title>One word closer · Thesis in progress</title>
+<style>
+:root{color-scheme:light;--paper:#f4f1e9;--ink:#25372f;--muted:#646e64;--accent:#c65836;--line:#d5d8cc}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:Arial,Helvetica,sans-serif}
+button,a{-webkit-tap-highlight-color:transparent}
+button{font:inherit}
+.page{min-height:100svh;max-width:2200px;margin:auto;padding:clamp(20px,3vw,58px);display:flex;flex-direction:column;gap:20px}
+header{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--line);padding-bottom:18px;gap:16px}
+.brand{display:flex;align-items:center;gap:12px;font-size:13px;font-weight:700;letter-spacing:.16em;text-transform:uppercase}
+.brand svg{width:27px;height:27px}
+.top-right{display:flex;align-items:center;gap:22px}
+.label{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-size:11px;letter-spacing:.06em;text-transform:uppercase}
+.badge{display:flex;align-items:center;gap:8px}
+.dot{width:7px;height:7px;background:#547c52;border-radius:50%;display:inline-block}
+.fullscreen{display:flex;align-items:center;gap:8px;background:none;border:1px solid var(--line);border-radius:5px;padding:9px 12px;color:var(--ink);cursor:pointer;font-size:12px}
+.fullscreen:hover{background:#e5e8dc}
+.fullscreen svg{width:14px;height:14px}
+:focus-visible{outline:3px solid var(--accent);outline-offset:5px}
+.intro{display:flex;align-items:center;justify-content:space-between;gap:28px;padding:5px 0 0}
+.eyebrow{color:var(--accent);font-size:11px;letter-spacing:.16em;font-weight:700;text-transform:uppercase;margin:0 0 10px}
+h1{font:normal clamp(42px,4.8vw,94px)/1.05 Georgia,'Times New Roman',serif;letter-spacing:-.055em;margin:0}
+h1 em{font-weight:normal;position:relative}
+h1 em:after{content:"";position:absolute;height:3px;background:var(--accent);left:0;right:0;bottom:-7px;transform:rotate(-2deg)}
+.subtitle{color:var(--muted);font-size:clamp(13px,1vw,18px);line-height:1.5;margin:17px 0 0}
+.aside{display:flex;align-items:center;gap:20px;flex-shrink:0}
+.orbit{width:105px;height:105px;color:var(--accent);transform:rotate(-15deg)}
+.note{font:italic 18px/1.4 Georgia,serif;max-width:150px}
+figure{margin:0;background:#fff;border:1px solid var(--line);border-radius:9px;box-shadow:0 4px 0 #e4e5da;overflow:hidden;flex:1;display:flex;flex-direction:column;min-height:0}
+.figure-bar{display:flex;align-items:center;justify-content:space-between;padding:14px 22px;border-bottom:1px solid #e9ebe4;gap:16px}
+.figure-title{display:flex;align-items:center;gap:10px;font-size:12px;font-weight:700}
+.number{color:var(--accent);font:12px ui-monospace,monospace}
+.chart-wrap{position:relative;display:flex;align-items:center;justify-content:center;flex:1;min-height:170px;padding:clamp(8px,1.1vw,22px)}
+#chart{display:block;width:100%;height:100%;object-fit:contain;min-height:0}
+#empty{padding:50px 20px;text-align:center;line-height:1.6;color:var(--muted)}
+#empty[hidden]{display:none}
+#empty strong{display:block;color:var(--ink);font:28px Georgia,serif}
+figcaption{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:0 22px 12px;color:var(--muted);font-size:11px}
+figcaption a{color:inherit;text-underline-offset:3px}
+footer{display:flex;justify-content:space-between;align-items:center;gap:18px;padding-top:4px;font-size:12px}
+.footer-note{display:flex;align-items:center;gap:10px}
+.sparkle{color:var(--accent);font-size:21px}
+#quip{font-family:Georgia,serif;font-style:italic;font-size:15px}
+.clock{display:flex;align-items:center;gap:16px;color:var(--muted);white-space:nowrap}
+time{color:var(--ink);font:14px ui-monospace,monospace;font-variant-numeric:tabular-nums}
+@media(min-width:900px) and (min-height:600px){
+.page{height:100svh;display:grid;grid-template-columns:clamp(200px,19vw,320px) minmax(0,1fr);grid-template-rows:auto minmax(0,1fr) auto;gap:24px}
+header,footer{grid-column:1/-1}.intro{flex-direction:column;align-items:flex-start;justify-content:center;gap:40px;padding-right:12px}
+h1{font-size:clamp(58px,5.5vw,105px);line-height:1.02;max-width:300px}.subtitle{font-size:clamp(14px,1.1vw,21px);max-width:250px;margin-top:24px}
+.eyebrow{font-size:10px;line-height:1.6;max-width:180px;margin-bottom:20px}
+.aside{flex-direction:column;align-items:flex-start;gap:12px}.orbit{width:85px;height:85px}.note{font-size:17px}
+figure{height:100%}.chart-wrap{height:0}#chart{max-height:100%}.figure-bar{padding:14px 16px}.figure-bar .label{font-size:9px}
+}
+@media(min-aspect-ratio:19/10) and (min-width:900px){.intro{padding:0}.aside .orbit{width:75px;height:75px}h1{font-size:clamp(42px,4vw,75px)}.subtitle{margin-top:13px}}
+@media(max-width:760px){.page{gap:22px}.badge{display:none}.brand{font-size:10px;letter-spacing:.1em}.aside{display:none}.intro{padding:10px 0}.figure-bar{padding:13px}.figure-bar .label{font-size:9px}figure{flex:none}.chart-wrap{padding:5px;flex:none;min-height:0;aspect-ratio:4168/2410}#chart{height:100%}figcaption{padding:5px 13px 13px}footer{align-items:flex-start}.clock{flex-direction:column;gap:5px;align-items:flex-end;font-size:10px}#quip{font-size:13px}.fullscreen span{display:none}.fullscreen{padding:9px}}
+@media(prefers-reduced-motion:no-preference){.orbit .satellite{transform-origin:60px 60px;animation:turn 40s linear infinite}@keyframes turn{to{transform:rotate(360deg)}}}
+@media print{.page{padding:12px;height:auto}.fullscreen{display:none}.chart-wrap{height:auto}#chart{height:auto}}
+</style>
+</head>
+<body>
+<main class="page">
+<header>
+<div class="brand"><svg viewBox="0 0 28 28" fill="none" aria-hidden="true"><path d="M4 23V5m0 18h21M8 18l5-6 5 3 6-10" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/><circle cx="24" cy="5" r="2" fill="#c65836"/></svg>Thesis in progress</div>
+<div class="top-right"><span class="badge label"><span class="dot"></span>Research in motion</span>
+<button class="fullscreen" id="fullscreen" type="button" aria-label="Enter fullscreen"><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M7 3H3v4m10-4h4v4M3 13v4h4m10-4v4h-4" stroke="currentColor" stroke-width="1.5"/></svg><span>Fullscreen</span></button></div>
+</header>
+<section class="intro" aria-labelledby="headline">
+<div><p class="eyebrow">The long road to “submitted”</p><h1 id="headline">One word <em>closer.</em></h1><p class="subtitle">Words, figures, and small victories. A thesis taking shape.</p></div>
+<div class="aside" aria-hidden="true"><svg class="orbit" viewBox="0 0 120 120" fill="none"><ellipse cx="60" cy="60" rx="51" ry="22" stroke="currentColor" stroke-width="1.1"/><ellipse cx="60" cy="60" rx="51" ry="22" transform="rotate(60 60 60)" stroke="currentColor" stroke-width="1.1"/><ellipse cx="60" cy="60" rx="51" ry="22" transform="rotate(120 60 60)" stroke="currentColor" stroke-width="1.1"/><circle cx="60" cy="60" r="6" fill="currentColor"/><g class="satellite"><circle cx="109" cy="54" r="4" fill="currentColor"/></g></svg><div class="note">Small steps.<br>Occasional<br>quantum leaps.</div></div>
+</section>
+<figure aria-labelledby="plot-heading">
+<div class="figure-bar"><div class="figure-title" id="plot-heading"><span class="number">01 /</span> The writing trajectory</div><span class="label">Every paragraph counts</span></div>
+<div class="chart-wrap"><img id="chart" src="scripts/thesis_progress.png" alt="Thesis writing progress over time, showing word and figure counts for the whole thesis and individual chapters. Solid lines represent words; dotted lines represent figures." decoding="async"><div id="empty" hidden role="status"><strong>A brief intermission.</strong>The progress plot is taking a coffee break. We’ll try again automatically.</div></div>
+<figcaption><span id="image-status" role="status">Loading progress plot…</span><a id="original" href="scripts/thesis_progress.png" target="_blank" rel="noopener">Open original plot ↗</a></figcaption>
+</figure>
+<footer><div class="footer-note"><span class="sparkle" aria-hidden="true">✳</span><span id="quip">Please do not tap the glass. The thesis is growing.</span></div><div class="clock"><span id="today"></span><time id="clock" aria-label="Current local time"></time></div></footer>
+</main>
+<script>
+(() => {
+  // Replace the PNG at this path whenever the plot is regenerated.
+  const IMAGE_PATH = 'scripts/thesis_progress.png';
+  const PUBLIC_PREVIEW = 'https://raw.githubusercontent.com/nstrangm/ThesisProgressPlot/main/scripts/thesis_progress.png';
+  const REFRESH_MS = 5 * 60 * 1000;
+  const image = document.getElementById('chart');
+  const status = document.getElementById('image-status');
+  const empty = document.getElementById('empty');
+  const original = document.getElementById('original');
+  const fullscreen = document.getElementById('fullscreen');
+  const preview = location.protocol === 'file:' || ['localhost','127.0.0.1'].includes(location.hostname);
+  const source = preview ? PUBLIC_PREVIEW : IMAGE_PATH;
+  let refreshing = false;
+  let hasImage = false;
+  function refreshImage() {
+    if (refreshing) return;
+    refreshing = true;
+    const next = new Image();
+    next.onload = () => {
+      image.src = next.src;
+      image.hidden = false;
+      empty.hidden = true;
+      hasImage = true;
+      refreshing = false;
+      status.textContent = 'Image checked ' + new Intl.DateTimeFormat(undefined,{hour:'2-digit',minute:'2-digit'}).format(new Date()) + ' · Refreshes every 5 min';
+    };
+    next.onerror = () => {
+      refreshing = false;
+      if (!hasImage) {image.hidden = true; empty.hidden = false;}
+      status.textContent = hasImage ? 'Refresh unavailable · Showing last loaded plot · Retrying in 5 min' : 'Plot unavailable · Retrying in 5 min';
+    };
+    next.src = source + '?v=' + Date.now();
+  }
+  original.href = source;
+  refreshImage();
+  setInterval(refreshImage, REFRESH_MS);
+  document.addEventListener('visibilitychange', () => {if (!document.hidden) refreshImage();});
+  function tick() {
+    const now = new Date();
+    document.getElementById('clock').textContent = new Intl.DateTimeFormat(undefined,{hour:'2-digit',minute:'2-digit',hour12:false}).format(now);
+    document.getElementById('clock').dateTime = now.toISOString();
+    document.getElementById('today').textContent = new Intl.DateTimeFormat('en-GB',{weekday:'short',day:'numeric',month:'short'}).format(now);
+  }
+  tick(); setInterval(tick,1000);
+  if (!document.fullscreenEnabled) fullscreen.hidden = true;
+  fullscreen.addEventListener('click', async () => {
+    try {
+      if (document.fullscreenElement) await document.exitFullscreen();
+      else await document.documentElement.requestFullscreen();
+    } catch {
+      fullscreen.querySelector('span').textContent = 'Use browser fullscreen';
+      fullscreen.setAttribute('aria-label','Use your browser menu to enter fullscreen');
+    }
+  });
+  document.addEventListener('fullscreenchange', () => {
+    const active = !!document.fullscreenElement;
+    fullscreen.querySelector('span').textContent = active ? 'Exit fullscreen' : 'Fullscreen';
+    fullscreen.setAttribute('aria-label',active ? 'Exit fullscreen' : 'Enter fullscreen');
+  });
+  const quips = [
+    'Please do not tap the glass. The thesis is growing.',
+    'Somewhere, a paragraph just became a slightly better paragraph.',
+    'Today’s tiny victory. Tomorrow’s figure caption.',
+    'Research: turning coffee into carefully qualified statements.',
+    'A moment of silence for the sentences that didn’t make it.'
+  ];
+  let quip = 0;
+  setInterval(() => {document.getElementById('quip').textContent = quips[++quip % quips.length];},30000);
+})();
+</script>
+</body>
+</html>
